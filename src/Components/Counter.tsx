@@ -17,8 +17,8 @@ export const Counter=({count,changeCount,resetCount,error,...props}:CounterType)
             <Display error={error} count={count}/>
 
             <div className="third">
-                <Button callback={changeCount} name={'Inc'} count={count}/>
-                <Button callback={resetCount} name={'Reset'} count={count}/>
+                <Button callback={changeCount} name={'Inc'} />
+                <Button callback={resetCount} name={'Reset'} />
             </div>
         </div>
     )

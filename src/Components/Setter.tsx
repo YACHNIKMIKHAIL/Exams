@@ -1,12 +1,16 @@
 import React, {useState} from "react";
+import {Button} from "./Button";
 
 
 type SetterPropsType = {
     setMaxValue: (maxValie: number) => void
     setMinValue: (maxValie: number) => void
+    Preset :()=>void
+    minValue: number
+    maxValue: number
 }
 export const Setter = (props: SetterPropsType) => {
-    const [count1, setCount1] = useState()
+    // const [count1, setCount1] = useState()
 
 
     return (
@@ -19,7 +23,7 @@ export const Setter = (props: SetterPropsType) => {
             }}/>
 
             <div className="third">
-                <button>Get</button>
+           <Button callback={props.Preset} name={'Get'} />
             </div>
         </div>
     )

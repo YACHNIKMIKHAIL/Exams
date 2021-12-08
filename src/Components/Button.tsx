@@ -3,13 +3,13 @@ import React from "react";
 type ButtonType = {
     callback: () => void
     name: string
-    count: number
-
+    // count: number
+    // minValue: number
+    // maxValue: number
 }
-export const Button = ({callback, name, count, ...props}: ButtonType) => {
+export const Button = ({callback, name, ...props}: ButtonType) => {
 
     return (
-        <button className={(count === 0 && name === 'Reset' || count === 5 && name === 'Inc') ? 'disabled' : ''}
-                onClick={callback}>{name}</button>
+        <button onClick={(e)=>callback()}>{name}</button>
     )
 }
