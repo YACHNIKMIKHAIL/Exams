@@ -10,6 +10,7 @@ type CounterType={
     changeCount:()=>void
     resetCount:()=>void
     error:boolean
+
 }
 export const Counter=({count,changeCount,resetCount,error,...props}:CounterType)=>{
     return(
