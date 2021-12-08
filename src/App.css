@@ -5,6 +5,7 @@
     align-items: center;
     height: 100vh;
     background: url("./Components/Images/wallpaperflare.com_wallpaper.jpg")no-repeat center/cover;
+    grid-template-columns: 1fr 1fr;
 }
 
 .first {
