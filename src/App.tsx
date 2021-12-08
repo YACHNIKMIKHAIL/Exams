@@ -51,7 +51,13 @@ function App() {
         localStorage.setItem('maxCounterValue', JSON.stringify(value))
     }, [maxValue])
 
-    const Preset = () => (maxValue - minValue !== 0 || maxValue - minValue > 0) ? setValue(minValue) : ''
+    const Preset = () => {
+        if (maxValue - minValue !== 0 || maxValue - minValue > 0) {
+            setValue(minValue)
+            setMinValue(minValue)
+            setMaxValue(maxValue)
+        }
+    }
 
 
     const incHandler = () => {
@@ -80,7 +86,8 @@ function App() {
 
     return (
         <div className="App">
-            <Setter setMinValue={setMinValue} setMaxValue={setMaxValue} Preset={Preset} minValue={minValue} maxValue={maxValue}/>
+            <Setter setMinValue={setMinValue} setMaxValue={setMaxValue} Preset={Preset} minValue={minValue}
+                    maxValue={maxValue}/>
             <Counter count={value} changeCount={changeCount} resetCount={resetCount} error={error}/>
             {/*<button onClick={() => Preset(minValue, maxValue)}>Preset</button>*/}
             {/*<button onClick={del}>clear</button>*/}
