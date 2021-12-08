@@ -9,6 +9,8 @@ function App() {
     const [minValue, setMinValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(0)
 
+    let [error, setError] = useState<boolean>(false)
+
     useEffect(() => {
         let valueAsString = localStorage.getItem('counterValue')
         if (valueAsString) {
@@ -29,10 +31,6 @@ function App() {
         }
     }, [])
 
-    // useEffect(() => {
-    //     localStorage.setItem('minCounterValue', JSON.stringify(value))
-    // }, [minValue])
-
     useEffect(() => {
         let maxValueAsString = localStorage.getItem('maxCounterValue')
         if (maxValueAsString) {
@@ -41,10 +39,6 @@ function App() {
         }
     }, [])
 
-    // useEffect(() => {
-    //     localStorage.setItem('maxCounterValue', JSON.stringify(value))
-    // }, [maxValue])
-
     const Preset = () => {
         if (maxValue - minValue !== 0 || maxValue - minValue > 0) {
             setValue(minValue)
@@ -52,23 +46,10 @@ function App() {
             setMaxValue(maxValue)
             localStorage.setItem('minCounterValue', minValue.toString())
             localStorage.setItem('maxCounterValue', maxValue.toString())
+        }else{
+            setError(true)
         }
     }
-
-
-    const incHandler = () => {
-        console.log(value)
-        setValue(value + 1)
-    }
-    // const del = () => {
-    //     localStorage.clear()
-    // }
-
-    // let start = 0
-    // let finish = 5
-
-    // let [count, setCount] = useState<number>(0)
-    let [error, setError] = useState<boolean>(false)
 
     const changeCount = () => (minValue < maxValue && value < maxValue) ? setValue(value + 1) : setError(true)
 
@@ -91,8 +72,6 @@ function App() {
             <Setter setMinValue={setMinValue} setMaxValue={setMaxValue} Preset={Preset} minValue={minValue}
                     maxValue={maxValue} onChangeInputMax={onChangeInputMax} onChangeInputMin={onChangeInputMin}/>
             <Counter count={value} changeCount={changeCount} resetCount={resetCount} error={error}/>
-            {/*<button onClick={() => Preset(minValue, maxValue)}>Preset</button>*/}
-            {/*<button onClick={del}>clear</button>*/}
         </div>
     );
 }

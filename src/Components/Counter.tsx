@@ -2,9 +2,6 @@ import React from "react";
 import {Button} from "./Button";
 import {Display} from "./Dislpay";
 
-
-
-
 type CounterType={
     count:number
     changeCount:()=>void
