@@ -6,6 +6,6 @@ type DisplayType = {
 }
 export const Display = ({error, count, ...props}: DisplayType) => {
     return (
-        <div className={error ? 'error' : 'second'}>{count}</div>
+        <div className={'second'}>{count}</div>
     )
 }

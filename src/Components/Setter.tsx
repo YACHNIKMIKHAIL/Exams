@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import {Button} from "./Button";
 import {Input} from "./Input";
 
@@ -9,16 +9,18 @@ type SetterPropsType = {
     Preset: () => void
     minValue: number
     maxValue: number
-    onChangeInputMax: (e:any) => void
-    onChangeInputMin: (e:any) => void
+    onChangeInputMax: (e:ChangeEvent<HTMLInputElement>) => void
+    onChangeInputMin: (e:ChangeEvent<HTMLInputElement>) => void
+    value:number
 }
 export const Setter = (props: SetterPropsType) => {
     return (
         <div className="first">
-            <Input callback={props.onChangeInputMax} value={props.maxValue}/>
+            <Input callback={props.onChangeInputMax} value={props.maxValue} minValue={props.minValue}/>
             <Input callback={props.onChangeInputMin} value={props.minValue}/>
             <div className="third">
-                <Button callback={props.Preset} name={'Get'}/>
+                <Button callback={props.Preset} name={'Get'} value={props.value} maxValue={props.maxValue} minValue={props.minValue}
+                />
             </div>
         </div>
     )

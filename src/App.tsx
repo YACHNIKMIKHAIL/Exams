@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./Components/Counter";
 import {Setter} from "./Components/Setter";
@@ -46,12 +46,12 @@ function App() {
             setMaxValue(maxValue)
             localStorage.setItem('minCounterValue', minValue.toString())
             localStorage.setItem('maxCounterValue', maxValue.toString())
-        }else{
+        } else {
             setError(true)
         }
     }
 
-    const changeCount = () => (minValue < maxValue && value < maxValue) ? setValue(value + 1) : setError(true)
+    const changeCount = () => (minValue < maxValue && value < maxValue) ? setValue(value + 1)  : setError(true)
 
     const resetCount = () => {
         localStorage.clear()
@@ -59,10 +59,10 @@ function App() {
         setMinValue(0)
         setMaxValue(0)
     }
-    const onChangeInputMax = (e: any) => {
+    const onChangeInputMax = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxValue(e.currentTarget.valueAsNumber)
     }
-    const onChangeInputMin = (e: any) => {
+    const onChangeInputMin = (e: ChangeEvent<HTMLInputElement>) => {
         setMinValue(e.currentTarget.valueAsNumber)
     }
 
@@ -70,8 +70,12 @@ function App() {
     return (
         <div className="App">
             <Setter setMinValue={setMinValue} setMaxValue={setMaxValue} Preset={Preset} minValue={minValue}
-                    maxValue={maxValue} onChangeInputMax={onChangeInputMax} onChangeInputMin={onChangeInputMin}/>
-            <Counter count={value} changeCount={changeCount} resetCount={resetCount} error={error}/>
+                    maxValue={maxValue} onChangeInputMax={onChangeInputMax} onChangeInputMin={onChangeInputMin}
+                    value={value}
+            />
+            <Counter value={value} changeCount={changeCount} resetCount={resetCount} error={error} minValue={0}
+                     maxValue={maxValue}
+            />
         </div>
     );
 }
