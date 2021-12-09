@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 type ButtonType = {
@@ -12,16 +12,18 @@ export const Button = ({callback, name, ...props}: ButtonType) => {
     const isInc = name === 'Inc'
     const isRes = name === 'Reset'
     const isGet = name === 'Get'
+    let valueAsString = localStorage.getItem('counterValue')
 
-    const IncButtom = (props.value === props.maxValue || (props.value < 0 || props.value > props.maxValue))
-        ? ''
-        : 'disabled'
-    const ResButtom = (props.minValue === 0) ? 'disabled' : ''
-    const Buttom = (isInc ? IncButtom : isGet) ? '' : isRes ? ResButtom : 'disabled'
+    let  IncButton = (props.value === props.maxValue || (props.value <= 0 || props.value > props.maxValue))
+        ? 'disabled'
+        : ''
+
+    const ResButton = (props.value === props.maxValue && valueAsString !== "0" ) ? '' : 'disabled'
+    const Button = isInc ? IncButton : isGet ? '' : isRes ? ResButton : 'disabled'
 
 
     return (
-        <button className={Buttom}
+        <button className={Button}
                 onClick={(e) => callback()}>{name}</button>
     )
 }

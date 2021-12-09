@@ -8,7 +8,9 @@ function App() {
     const [value, setValue] = useState<number>(0)
     const [minValue, setMinValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(0)
-
+//(Number(localStorage.getItem("counterValue")))
+    //(Number(localStorage.getItem("minCounterValue")))
+    //(Number(localStorage.getItem("maxCounterValue")))
     let [error, setError] = useState<boolean>(false)
 
     useEffect(() => {
@@ -41,17 +43,17 @@ function App() {
 
     const Preset = () => {
         if (maxValue - minValue !== 0 || maxValue - minValue > 0) {
+            localStorage.setItem('minCounterValue', minValue.toString())
+            localStorage.setItem('maxCounterValue', maxValue.toString())
             setValue(minValue)
             setMinValue(minValue)
             setMaxValue(maxValue)
-            localStorage.setItem('minCounterValue', minValue.toString())
-            localStorage.setItem('maxCounterValue', maxValue.toString())
         } else {
             setError(true)
         }
     }
 
-    const changeCount = () => (minValue < maxValue && value < maxValue) ? setValue(value + 1)  : setError(true)
+    const changeCount = () => (minValue < maxValue && value < maxValue) ? setValue(value + 1) : setError(true)
 
     const resetCount = () => {
         localStorage.clear()
@@ -60,6 +62,7 @@ function App() {
         setMaxValue(0)
     }
     const onChangeInputMax = (e: ChangeEvent<HTMLInputElement>) => {
+        // debugger
         setMaxValue(e.currentTarget.valueAsNumber)
     }
     const onChangeInputMin = (e: ChangeEvent<HTMLInputElement>) => {
