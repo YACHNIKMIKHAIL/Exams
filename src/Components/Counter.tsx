@@ -11,6 +11,8 @@ type CounterType={
     maxValue:number
 }
 export const Counter=({value,changeCount,resetCount,error,...props}:CounterType)=>{
+    console.log('value', value);
+    console.log('error', error)
     return(
         <div className="first">
             <Display error={error} count={value}/>

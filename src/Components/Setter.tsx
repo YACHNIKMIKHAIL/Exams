@@ -4,8 +4,8 @@ import {Input} from "./Input";
 
 
 type SetterPropsType = {
-    setMaxValue: (maxValie: number) => void
-    setMinValue: (maxValie: number) => void
+    // setMaxValue: (maxValie: number) => void
+    // setMinValue: (maxValie: number) => void
     Preset: () => void
     minValue: number
     maxValue: number
