@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 
-
 type ButtonType = {
     callback: () => void
     name: string

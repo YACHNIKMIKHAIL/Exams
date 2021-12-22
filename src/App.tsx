@@ -8,9 +8,6 @@ function App() {
     const [value, setValue] = useState<number>(0)
     const [minValue, setMinValue] = useState<number>(0)
     const [maxValue, setMaxValue] = useState<number>(0)
-//(Number(localStorage.getItem("counterValue")))
-    //(Number(localStorage.getItem("minCounterValue")))
-    //(Number(localStorage.getItem("maxCounterValue")))
     let [error, setError] = useState<boolean>(false)
 
     useEffect(() => {
@@ -62,7 +59,6 @@ function App() {
         setMaxValue(0)
     }
     const onChangeInputMax = (e: ChangeEvent<HTMLInputElement>) => {
-        // debugger
         setMaxValue(e.currentTarget.valueAsNumber)
     }
     const onChangeInputMin = (e: ChangeEvent<HTMLInputElement>) => {
