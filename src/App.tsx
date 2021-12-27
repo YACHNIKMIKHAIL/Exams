@@ -41,7 +41,7 @@ function App() {
     }, [state])
 
     useEffect(() => {
-        let minValueAsString = localStorage.getItem('minCounterValue')
+        let minValueAsString = localStorage.getItem('minValue')
         if (minValueAsString) {
             let newValue = JSON.parse(minValueAsString)
             dispachValue(setMinValueAC(newValue))
@@ -50,7 +50,7 @@ function App() {
     }, [])
 
     useEffect(() => {
-        let maxValueAsString = localStorage.getItem('maxCounterValue')
+        let maxValueAsString = localStorage.getItem('maxValue')
         if (maxValueAsString) {
             let newValue = JSON.parse(maxValueAsString)
             dispachValue(setMaxValueAC(newValue))
@@ -61,8 +61,8 @@ function App() {
     const Preset = () => {
         console.log('set on')
         if (state.maxValue - state.minValue !== 0 || state.maxValue - state.minValue > 0) {
-            localStorage.setItem('minCounterValue', state.minValue.toString())
-            localStorage.setItem('maxCounterValue', state.maxValue.toString())
+            localStorage.setItem('minValue', state.minValue.toString())
+            localStorage.setItem('minValue', state.maxValue.toString())
             console.log(state.value)
             dispachValue(addValueAC(state.minValue, state.maxValue))
 
