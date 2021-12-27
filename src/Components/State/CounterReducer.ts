@@ -3,38 +3,50 @@ export type ValueType = {
     minValue: number
     maxValue: number
 }
-const CounterReducer = (state: ValueType, action: ActionType) => {
-switch (action.type){
-    case 'ADD_VALUE':
-        return {...state,
-            value: action.payload.minValue,
-            minValue:action.payload.minValue,
-            maxValue: action.payload.maxValue
-        }
-    case 'CHANGE_VALUE':
-        return {...state,
-            value:action.payload.actualValue
-        }
-    case 'RESET_VALUE':
-        return {...state,
-            value:0,
-            minValue: 0,
-            maxValue: 0
-        }
-    case 'SET_MAX_VALUE':
-        return {...state,
-            maxValue: action.payload.maxValue
-        }
-    case 'SET_MIN_VALUE':
-        return {...state,
-            minValue: action.payload.minValue
-        }
-    default:
-        return state
+const initialState: ValueType = {
+    value: 0,
+    minValue: 0,
+    maxValue: 0
 }
 
+type CounterReducerType = (state: ValueType, action: ActionType) => ValueType
+const CounterReducer: CounterReducerType = (state = initialState, action) => {
+    switch (action.type) {
+        case 'ADD_VALUE':
+            return {
+                ...state,
+                value: action.payload.minValue,
+                minValue: action.payload.minValue,
+                maxValue: action.payload.maxValue
+            }
+        case 'CHANGE_VALUE':
+            return {
+                ...state,
+                value: action.payload.actualValue
+            }
+        case 'RESET_VALUE':
+            return {
+                ...state,
+                value: 0,
+                minValue: 0,
+                maxValue: 0
+            }
+        case 'SET_MAX_VALUE':
+            return {
+                ...state,
+                maxValue: action.payload.maxValue
+            }
+        case 'SET_MIN_VALUE':
+            return {
+                ...state,
+                minValue: action.payload.minValue
+            }
+        default:
+            return state
+    }
+
 };
-type ActionType = addValueAcType|changeValueAcType|resetValueAcType|setMaxValueAcType|setMinValueAcType
+type ActionType = addValueAcType | changeValueAcType | resetValueAcType | setMaxValueAcType | setMinValueAcType
 
 type addValueAcType = ReturnType<typeof addValueAC>
 export const addValueAC = (minValue: number, maxValue: number) => {
@@ -46,11 +58,11 @@ export const addValueAC = (minValue: number, maxValue: number) => {
 }
 
 type changeValueAcType = ReturnType<typeof changeValueAC>
-export const changeValueAC = (actualValue:number) => {
+export const changeValueAC = (actualValue: number) => {
     return {
         type: 'CHANGE_VALUE',
         payload:
-            {actualValue:actualValue}
+            {actualValue: actualValue}
     } as const
 }
 
@@ -62,21 +74,21 @@ export const resetValueAC = () => {
 }
 
 type setMaxValueAcType = ReturnType<typeof setMaxValueAC>
-export const setMaxValueAC = (maxValue:number) => {
+export const setMaxValueAC = (maxValue: number) => {
     return {
         type: 'SET_MAX_VALUE',
-        payload:{
-            maxValue:maxValue
+        payload: {
+            maxValue: maxValue
         }
     } as const
 }
 
 type setMinValueAcType = ReturnType<typeof setMinValueAC>
-export const setMinValueAC = (minValue:number) => {
+export const setMinValueAC = (minValue: number) => {
     return {
         type: 'SET_MIN_VALUE',
-        payload:{
-            minValue:minValue
+        payload: {
+            minValue: minValue
         }
     } as const
 }

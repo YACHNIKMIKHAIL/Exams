@@ -4,7 +4,7 @@
     justify-items: center;
     align-items: center;
     height: 100vh;
-    background: url("./Components/Images/wallpaperflare.com_wallpaper.jpg")no-repeat center/cover;
+    background: url("./Components/Images/wallpaperflare.com_wallpaper.jpg") no-repeat center/cover;
     grid-template-columns: 1fr 1fr;
 }
 
@@ -16,7 +16,7 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: rgba(146,28,36,0.5);
+    background-color: rgba(146, 28, 36, 0.5);
 }
 
 .second {
@@ -35,7 +35,7 @@
     width: 300px;
     height: 120px;
     border-radius: 20px;
-    background-color:  rgba(179, 220, 186, 0.3);
+    background-color: rgba(179, 220, 186, 0.3);
 }
 
 .error {
@@ -54,7 +54,7 @@
     opacity: 0.3;
     font-weight: lighter;
     color: black;
-    background-color: rgba(204, 48, 49,0.5);
+    background-color: rgba(204, 48, 49, 0.5);
 }
 
 button {
@@ -62,12 +62,12 @@ button {
     font-size: 30px;
     margin: 20px 10px;
     font-weight: bold;
-    background-color: rgba(17,31,49,0.7);
-    color: rgba(204, 48, 49,1);
+    background-color: rgba(17, 31, 49, 0.7);
+    color: rgba(204, 48, 49, 1);
     border-radius: 20px;
 }
 
-input{
+input {
     padding: 10px;
     font-size: 25px;
     border-radius: 20px;
