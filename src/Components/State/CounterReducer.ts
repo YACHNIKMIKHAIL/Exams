@@ -18,7 +18,7 @@ const CounterReducer: CounterReducerType = (state = initialState, action): Value
     switch (action.type) {
         case 'ADD_VALUE':
             return {
-                ...state,counter: {
+                ...state, counter: {
                     value: action.payload.minValue,
                     minValue: action.payload.minValue,
                     maxValue: action.payload.maxValue
@@ -26,13 +26,14 @@ const CounterReducer: CounterReducerType = (state = initialState, action): Value
             }
         case 'CHANGE_VALUE':
             return {
-                ...state,counter: {...state.counter,
+                ...state, counter: {
+                    ...state.counter,
                     value: action.payload.actualValue
                 }
             }
         case 'RESET_VALUE':
             return {
-                ...state,counter: {
+                ...state, counter: {
                     value: 0,
                     minValue: 0,
                     maxValue: 0
@@ -40,14 +41,18 @@ const CounterReducer: CounterReducerType = (state = initialState, action): Value
             }
         case 'SET_MAX_VALUE':
             return {
-                ...state,counter: {...state.counter,
+                ...state, counter: {
+                    ...state.counter,
                     maxValue: action.payload.maxValue
-                }          }
+                }
+            }
         case 'SET_MIN_VALUE':
             return {
-                ...state,counter: {...state.counter,
+                ...state, counter: {
+                    ...state.counter,
                     minValue: action.payload.minValue
-                }}
+                }
+            }
         default:
             return state
     }
@@ -101,28 +106,3 @@ export const setMinValueAC = (minValue: number) => {
 }
 
 export default CounterReducer;
-
-// export const addValueTC = () => (dispatch: Dispatch, getState: () => ValueType) => {
-//     let currentValue = getState().value
-//     localStorage.setItem('counterValue', JSON.stringify(currentValue))
-//     dispatch(changeValueAC(currentValue + 1))
-// }
-//
-// export const setValuesToLCTC = () => (dispatch: Dispatch) => {
-//
-//     let valueAsString = localStorage.getItem('counterValue')
-//     if (valueAsString) {
-//         let newValue = JSON.parse(valueAsString)
-//         dispatch(changeValueAC(newValue))
-//     }
-//     let minValueAsString = localStorage.getItem('minValue')
-//     if (minValueAsString) {
-//         let newValue = JSON.parse(minValueAsString)
-//         dispatch(setMinValueAC(newValue))
-//     }
-//     let maxValueAsString = localStorage.getItem('maxValue')
-//     if (maxValueAsString) {
-//         let newValue = JSON.parse(maxValueAsString)
-//         dispatch(setMaxValueAC(newValue))
-//     }
-// }
