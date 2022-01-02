@@ -17,6 +17,7 @@ function App() {
     const state = useSelector<rootReducerType, ValueType>(state => state.counter)
     const dispatch = useDispatch()
 
+    const [initial, setInitial] = useState<boolean>(false)
     let [error, setError] = useState<boolean>(false)
 
     useEffect(() => {
@@ -25,29 +26,27 @@ function App() {
             let newValue = JSON.parse(valueAsString)
             dispatch(changeValueAC(newValue))
         }
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem('counterValue', JSON.stringify(state.value))
-        localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
-        localStorage.setItem('minValue', JSON.stringify(state.minValue))
-    }, [state])
-
-    useEffect(() => {
         let minValueAsString = localStorage.getItem('minValue')
         if (minValueAsString) {
             let newValue = JSON.parse(minValueAsString)
             dispatch(setMinValueAC(newValue))
         }
-    }, [])
-
-    useEffect(() => {
         let maxValueAsString = localStorage.getItem('maxValue')
         if (maxValueAsString) {
             let newValue = JSON.parse(maxValueAsString)
             dispatch(setMaxValueAC(newValue))
         }
+        setInitial(true)
     }, [])
+
+    useEffect(() => {
+        if (initial) {
+            localStorage.setItem('counterValue', JSON.stringify(state.value))
+            localStorage.setItem('minValue', JSON.stringify(state.minValue))
+            localStorage.setItem('maxValue', JSON.stringify(state.maxValue))
+        }
+    }, [state])
+
 
     const Preset = () => {
         console.log('set on')
