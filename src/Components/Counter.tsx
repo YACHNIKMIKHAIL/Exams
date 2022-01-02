@@ -16,14 +16,14 @@ export const Counter = ({changeCount, resetCount, error, ...props}: CounterType)
 
     return (
         <div className="first">
-            <Display error={error} count={value.value}/>
+            <Display error={error} count={value.counter.value}/>
 
             <div className="third">
-                <Button callback={changeCount} name={'Inc'} value={value.value} minValue={value.minValue}
-                        maxValue={value.maxValue}
+                <Button callback={changeCount} name={'Inc'} value={value.counter.value} minValue={value.counter.minValue}
+                        maxValue={value.counter.maxValue}
                 />
-                <Button callback={resetCount} name={'Reset'} value={+value} minValue={value.minValue}
-                        maxValue={value.maxValue}
+                <Button callback={resetCount} name={'Reset'} value={+value} minValue={value.counter.minValue}
+                        maxValue={value.counter.maxValue}
                 />
             </div>
         </div>
